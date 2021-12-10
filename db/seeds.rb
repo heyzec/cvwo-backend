@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Tdlist.create(title: "Complete CS2040S Tutorial 0", done: false)
+Tdlist.create(title: "Read \"Getting Started with Rails\" on guides.rubyonrails.org", done: false)
