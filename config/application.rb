@@ -18,5 +18,12 @@ module CvwoBackend
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'https://loving-hoover-c44549.netlify.app', 'http://localhost:3000'
+      resource '*', :headers => :any, :methods => [:get, :post, :delete, :patch, :options]
+    end
+  end
+
   end
 end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   scope '/api/v1' do
-    resources :tdlists
+    resources :tasks
   end
 end

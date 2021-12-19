@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_162909) do
+ActiveRecord::Schema.define(version: 2021_12_19_060110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tdlists", force: :cascade do |t|
-    t.string "title"
+  create_table "tasks", force: :cascade do |t|
+    t.string "text"
     t.boolean "done"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "day"
   end
 
 end
