@@ -28,6 +28,6 @@ class TasksController < ApplicationController
 
   private
     def task_param
-      params.require(:task).permit(:text, :day, :done)
+      params.require(:task).permit(:text, :day, {:tags => []}, :done)
     end
 end
