@@ -1,24 +1,6 @@
-# README
+# CVWO AY21/22 Assignment - Backend
+## Quick links
+[Main](https://github.com/heyzec/cvwo-assignment) [Backend](https://github.com/heyzec/cvwo-backend) [Link to deployment](https://heyzec-cvwo.netlify.app/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Other info
+Ruby version: 3.0.2
