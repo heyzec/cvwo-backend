@@ -19,12 +19,10 @@ module CvwoBackend
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      # origins 'https://heyzec-cvwo.netlify.app', 'http://localhost:3000'
-      origins 'http://localhost:3000', /https:\/\/(\w+--)?heyzec-cvwo.netlify.app/  # Allow Netlify draft URLs
-      resource '*', :headers => :any, :methods => [:get, :post, :delete, :patch, :options]
+      allow do
+        origins 'http://localhost:3000', /https:\/\/(\w+--)?heyzec-cvwo.netlify.app/  # Allow Netlify draft URLs
+        resource '*', :headers => :any, :methods => [:get, :post, :delete, :patch, :options], :credentials => true
+      end
     end
-  end
-
   end
 end

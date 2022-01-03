@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+
   scope '/api/v1' do
     resources :tasks
-  end
-  scope '/api/v1' do
     resources :tags
   end
+
+  post '/signup', to: 'users#create'
+  post '/signin', to: 'sessions#create'
+  get '/signout', to: 'sessions#destroy'
+  get '/status', to: 'sessions#index'
+
 end
