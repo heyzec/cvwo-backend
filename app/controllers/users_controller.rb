@@ -4,14 +4,15 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      render plain: 'ok'
+      head :ok
       session[:user_id] = user.id  # From SessionsController - logs them in too
     else
-      render plain: user.errors.full_messages.to_sentence
+      render plain: user.errors.full_messages.to_sentence, status: :bad_request
     end
   end
   
-  # POST /deleteaccount
+  # Incomplete
+  # POST /.../deleteaccount
   def destroy
   end
 

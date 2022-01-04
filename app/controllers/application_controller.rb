@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   
   def ensure_current_user
     if !is_signed_in?
-      render plain: "hi", :status => :unauthorized
+      head :unauthorized
     end
   end
   

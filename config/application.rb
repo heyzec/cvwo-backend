@@ -20,9 +20,12 @@ module CvwoBackend
     # config.eager_load_paths << Rails.root.join("extras")
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000', /https:\/\/(\w+--)?heyzec-cvwo.netlify.app/  # Allow Netlify draft URLs
+        origins 'http://localhost:4000', /https:\/\/(\w+--)?heyzec-cvwo.netlify.app/  # Allow Netlify draft URLs
         resource '*', :headers => :any, :methods => [:get, :post, :delete, :patch, :options], :credentials => true
       end
     end
+    
+
+    Rails.application.config.action_dispatch.cookies_same_site_protection = :none
   end
 end

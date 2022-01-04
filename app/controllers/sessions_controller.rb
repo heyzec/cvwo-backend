@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   
-  # GET /status
+  # GET /.../status
   def index
     if !is_signed_in?
       render plain: ""
@@ -10,22 +10,18 @@ class SessionsController < ApplicationController
   end
   
 
-  # POST /signin
+  # POST /.../signin
   def create
     user = User.find_by(email: user_params[:email])
-    output = ""
-
     if user && user.is_password?(user_params[:password])
       session[:user_id] = user.id  # Better than cookies[...], prevents tampering
-      output += "ok"
+      head :ok
     else
-      output += "Invalid user or password"
+      head :unauthorized
     end
-    
-    render plain: output
   end
   
-  # GET /signout
+  # GET /.../signout
   def destroy
     session[:user_id] = nil
   end
