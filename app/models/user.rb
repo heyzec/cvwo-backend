@@ -5,7 +5,7 @@ class User < ApplicationRecord
   
   # Active Record Associations: Gives convenience methods to User objects
   # user.tasks returns the associated Task objects
-  has_many :tasks
+  has_and_belongs_to_many :lists
   has_many :tags
   
   def password
