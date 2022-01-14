@@ -9,7 +9,8 @@ class ListsController < ApplicationController
 
   # POST /.../lists
   def create
-    list = current_user.lists.new(list_params)
+    list = List.new(list_params)
+    list.users << current_user
     if list.save
       render json: list, status: :created
     else

@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  validates :email, uniqueness: true
-  validates :email, presence: true
+  validates :email, uniqueness: true, format: URI::MailTo::EMAIL_REGEXP
   validates :password, length: {minimum: 6, allow_nil: true}
   
   # Active Record Associations: Gives convenience methods to User objects
