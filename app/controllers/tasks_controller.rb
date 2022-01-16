@@ -3,7 +3,8 @@ class TasksController < ApplicationController
   
   # GET /.../tasks
   def index
-    tasks = current_user.tasks.order("created_at ASC")
+    # tasks = current_user.tasks.order("created_at ASC")
+    tasks = current_user.lists.map{|x| x.tasks}.flatten
     render json: tasks
   end
 
