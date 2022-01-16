@@ -1,0 +1,14 @@
+# This file is an example of the actual local_env.yml.example file
+
+# Rename this file to local_env.yml
+# Add account settings and API keys here.
+# This file should be listed in .gitignore to keep your settings secret!
+# Each entry gets set as a local environment variable.
+# This file overrides ENV variables in the Unix shell.
+# For example, setting:
+# GMAIL_USERNAME: 'Your_Gmail_Username'
+# makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
+
+APP_FRONTEND_URL: 'http://localhost:4000'
+AUTH_GITHUB_CLIENT_ID: '********************'
+AUTH_GITHUB_SECRET_ID: '****************************************'
