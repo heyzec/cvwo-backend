@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
-  # helper_method :current_user
-  helper_method :is_signed_in?
+
+  # helper_method :is_signed_in?
   
   def is_signed_in?
     !current_user.nil?
@@ -19,4 +19,5 @@ class ApplicationController < ActionController::Base
       User.find(session[:user_id])
     end
   end
+
 end

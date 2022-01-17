@@ -10,5 +10,10 @@
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 
 APP_FRONTEND_URL: 'http://localhost:4000'
+APP_BACKEND_URL: 'http://localhost:3000'
+
 AUTH_GITHUB_CLIENT_ID: '********************'
 AUTH_GITHUB_SECRET_ID: '****************************************'
+
+AUTH_GOOGLE_CLIENT_ID: '************************************************************************'
+AUTH_GOOGLE_SECRET_ID: '***********************************'
