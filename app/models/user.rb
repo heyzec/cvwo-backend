@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # Active Record Associations: Gives convenience methods to User objects
   # user.tasks returns the associated Task objects
   has_and_belongs_to_many :lists
-  has_many :tags
+  has_many :tags, dependent: :delete_all
   
   def password
     @password
@@ -19,5 +19,10 @@ class User < ApplicationRecord
   
   def is_password?(raw)
     BCrypt::Password.new(password_digest).is_password?(raw)
+  end
+ 
+  # Remove password_digest column when converting model record into json
+  def as_json(options = {})
+    super(options.merge({ except: [:password_digest] }))
   end
 end
