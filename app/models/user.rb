@@ -1,16 +1,14 @@
 class User < ApplicationRecord
+  has_many :links
+  has_many :lists, through: :links
+  has_many :tags, dependent: :delete_all
+
   validates :email, uniqueness: true, format: URI::MailTo::EMAIL_REGEXP
   validates :password, length: {minimum: 6, allow_nil: true}
-  
-  # Active Record Associations: Gives convenience methods to User objects
-  # user.tasks returns the associated Task objects
-  has_and_belongs_to_many :lists
-  has_many :tags, dependent: :delete_all
-  
+
   def password
     @password
   end
-  
   
   def password=(raw)
     @password = raw

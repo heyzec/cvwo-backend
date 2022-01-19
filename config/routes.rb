@@ -6,11 +6,15 @@ Rails.application.routes.draw do
     resources :tags
     resources :lists do
       post 'create', to: 'lists#create_task'
+      post 'share', to: 'lists#share'
     end
+    
+    get 'share/:hash', to: 'shares#index'
+    post 'share/:hash', to: 'shares#create'
 
     post 'signin', to: 'sessions#create'
     get 'signout', to: 'sessions#destroy'
-    get 'status',  to: 'sessions#index'      # For frontend to check if they are logged in
+    get 'status',  to: 'sessions#index'                 # For frontend to check if they are logged in
     
     post 'signup',         to: 'users#create'
     get 'user',            to: 'users#index'            # Retrieve user settings
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
       get 'github', to: 'auth#callback_github'
       get 'google', to: 'auth#callback_google'
     end
+    
   end
   
 end

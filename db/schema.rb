@@ -10,22 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_16_165648) do
+ActiveRecord::Schema.define(version: 2022_01_19_034614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "links", id: false, force: :cascade do |t|
+    t.bigint "list_id"
+    t.bigint "user_id"
+    t.index ["list_id", "user_id"], name: "index_links_on_list_id_and_user_id", unique: true
+    t.index ["list_id"], name: "index_links_on_list_id"
+    t.index ["user_id"], name: "index_links_on_user_id"
+  end
 
   create_table "lists", force: :cascade do |t|
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "lists_users", id: false, force: :cascade do |t|
-    t.bigint "list_id"
-    t.bigint "user_id"
-    t.index ["list_id"], name: "index_lists_users_on_list_id"
-    t.index ["user_id"], name: "index_lists_users_on_user_id"
+    t.string "share_hash"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -57,8 +59,8 @@ ActiveRecord::Schema.define(version: 2022_01_16_165648) do
     t.string "google_id"
   end
 
-  add_foreign_key "lists_users", "lists"
-  add_foreign_key "lists_users", "users"
+  add_foreign_key "links", "lists"
+  add_foreign_key "links", "users"
   add_foreign_key "tags", "users"
   add_foreign_key "tasks", "lists"
 end

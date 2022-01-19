@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
+  # GET /.../user
   def index
     render json: current_user
   end
   
-  # POST /signup
+  # POST /.../signup
   def create
     user = User.new(user_params)
     if user.save
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
     end
   end
   
+  # POST /.../changepassword
   def changepassword
     valid_params = params.permit(:old_password, :new_password)
   
@@ -40,6 +42,7 @@ class UsersController < ApplicationController
 
   end
   
+  # POST /.../changeemail
   def changeemail
     valid_params = params.permit(:email)
 
@@ -55,7 +58,7 @@ class UsersController < ApplicationController
     ensure_current_user && return
     current_user.destroy
     session[:user_id] = nil
-    head: :ok
+    head :ok
   end
 
 

@@ -35,3 +35,5 @@ cooking_list.tasks.create!(text: "Get flour, eggs, sugar", day: "2021-12-06T16:1
 cooking_list.tasks.create!(text: "Buy new whisking machine", day: "2021-12-06T16:12:00.000Z")
 cooking_list.tasks.create!(text: "Bake cake", day: "2021-12-06T16:12:00.000Z")
 cooking_list.tasks.create!(text: "Cook ramen", day: "2021-12-06T16:12:00.000Z")
+
+tester2.lists << project_list
