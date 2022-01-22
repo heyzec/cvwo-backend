@@ -28,8 +28,6 @@ module CvwoBackend
         resource '*', :headers => :any, :methods => [:get, :post, :delete, :patch, :options], :credentials => true
       end
     end
-    
 
-    Rails.application.config.action_dispatch.cookies_same_site_protection = :none
   end
 end

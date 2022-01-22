@@ -26,6 +26,9 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
   end
   
+
+  
+  
   private
   def user_params  # Parameter white listing
     params.require(:user).permit(:email, :password)
