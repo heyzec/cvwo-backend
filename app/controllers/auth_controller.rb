@@ -40,16 +40,19 @@ class AuthController < ApplicationController
 
     user_id = user_details['id']
     user_email = user_emails.select{|email| email['primary']}[0]['email']
-
-    if User.exists?(github_id: user_id)
-      # If user has already linked their GitHub account before
+    
+    if !current_user.nil?
+      user = current_user
+      user.update(github_id: user_id)
+      message = "You have linked your GitHub account!"
+    elsif User.exists?(github_id: user_id)
+      # If user has already linked their GitHub account before, do simple sign-in
       user = User.find_by(github_id: user_id)
-
     elsif User.exists?(email: user_email)
       # If user has not done so, but created an account using the same email (either basic account creation or Google)
       user = User.find_by(email: user_email)
       user.update(github_id: user_id)
-        message = "You have linked your GitHub account!"
+      message = "You have linked your GitHub account!"
     else
       # New user, create account
       user = User.new(email: user_email, github_id: user_id)
@@ -77,7 +80,7 @@ class AuthController < ApplicationController
         'grant_type' => 'authorization_code',
         'client_id' => ENV['AUTH_GOOGLE_CLIENT_ID'],
         'client_secret' => ENV['AUTH_GOOGLE_SECRET_ID'],
-        'redirect_uri' => "#{ENV['APP_BACKEND_URL']}/api/v1/auth/google",
+        'redirect_uri' => "#{ENV['APP_FRONTEND_URL']}/auth/callback/google",
         'code' => session_code
       },
       :accept => :json
@@ -90,12 +93,14 @@ class AuthController < ApplicationController
     user_email = user_info['email']
     user_email_verified = user_info['email_verified']
     
-  
     message = nil
-    if User.exists?(google_id: user_id)
-      # If user has already linked their Google account before
+    if !current_user.nil?
+      user = current_user
+      user.update(google_id: user_id)
+      message = "You have linked your Google account!"
+    elsif User.exists?(google_id: user_id)
+      # If user has already linked their Google account before, just sign in
       user = User.find_by(google_id: user_id)
-      
     else
       if !user_email_verified
         # Refuse to do anything with user email if they have not verified it with Google before
@@ -126,6 +131,11 @@ class AuthController < ApplicationController
   
   private
   def return_to_frontend(success, message)
-    redirect_to "#{ENV['APP_FRONTEND_URL']}/auth?success=#{success}#{message.nil? ? "" : "&message=#{message}"}"
+    render json: {
+      :success => success,
+      :message => message
+    }
+
+    # redirect_to "#{ENV['APP_FRONTEND_URL']}/auth?success=#{success}#{message.nil? ? "" : "&message=#{message}"}"
   end
 end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :links
+  has_many :links, dependent: :delete_all
   has_many :lists, through: :links
   has_many :tags, dependent: :delete_all
 
