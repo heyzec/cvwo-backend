@@ -117,4 +117,8 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  Rails.application.config.action_dispatch.cookies_same_site_protection = :none
+  config.force_ssl = true  # Need make cookies get the Secure attribute (together with Samesite=None)
+
 end
