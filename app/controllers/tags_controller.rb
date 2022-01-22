@@ -9,7 +9,10 @@ class TagsController < ApplicationController
 
   # POST /.../tags
   def create
-    # Active Record Associations
+    if !current_user.tags.find_by(:text => tag_params[:text]).nil?
+      head :conflict and return
+    end
+
     tag = current_user.tags.new(tag_params)
 
     if tag.save

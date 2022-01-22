@@ -4,7 +4,12 @@ class ListsController < ApplicationController
   # GET /.../lists
   def index
     lists = current_user.lists
-    render json: lists
+    output = lists.map do |list|
+      hash = list.as_json.update("shared": list.share_hash.nil?)
+      hash.delete("share_hash")
+      hash
+    end
+    render json: output
   end
 
   # POST /.../lists
@@ -42,8 +47,7 @@ class ListsController < ApplicationController
   def share
     list = List.find(params[:list_id])
     if list.share_hash.nil?
-      hash = SecureRandom.urlsafe_base64(24, false)
-      list.update(share_hash: hash)
+      list.generate_share_hash
     else
       hash = list.share_hash
     end
