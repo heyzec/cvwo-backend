@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
   scope '/api/v1' do
 
     resources :tasks
     resources :tags
     resources :lists do
       post 'create', to: 'lists#create_task'
-      post 'share', to: 'lists#share'
+      post 'share', to: 'shares#share_list'
     end
     
     get 'share/:hash', to: 'shares#index'
@@ -28,5 +27,4 @@ Rails.application.routes.draw do
     end
     
   end
-  
 end
