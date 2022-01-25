@@ -19,18 +19,18 @@ tester.tags.create!(text: "Friends", color: "#fcca65")
 
 dental_list = tester.lists.create!(text: "Dental")
 
-dental_list.tasks.create!(text: "Get referral from polyclinic", day: "2021-12-01T16:12:00.000Z", done: true)
-dental_list.tasks.create!(text: "Visit specialist", day: "2021-12-08T16:12:00.000Z", tags: ["Urgent"])
+dental_list.tasks.create!(text: "Get referral from polyclinic", day: "2022-01-03T01:30:00.461Z", done: true,  tags: ["Urgent"])
+dental_list.tasks.create!(text: "Visit specialist", day: "2022-02-22T06:05:00.011Z")
 
 project_list = tester.lists.create!(text: "Coding Project")
-project_list.tasks.create!(text: "First team meeting", day: "2021-12-02T16:12:00.000Z", done: true, tags: ["NUS"])
-project_list.tasks.create!(text: "Execution plan submission", day: "2021-12-03T16:12:00.000Z", tags: ["Urgent"])
-project_list.tasks.create!(text: "Second team meeting", day: "2021-12-09T16:12:00.000Z", tags: ["Zoom"])
-project_list.tasks.create!(text: "Final submission", day: "2021-12-10T16:12:00.000Z")
+project_list.tasks.create!(text: "First team meeting", day: "2021-12-10T09:00:00.166Z", done: true, tags: ["NUS"])
+project_list.tasks.create!(text: "Execution plan submission", day: "2021-12-30T04:00:00.684Z", done: true)
+project_list.tasks.create!(text: "Second team meeting", day: "2022-01-19T02:00:00.817Z", tags: ["Zoom"])
+project_list.tasks.create!(text: "Final submission", day: "2022-01-25T15:59:00.418Z", tags: ["Urgent"])
 
 personal_list = tester.lists.create!(text: "Personal")
-personal_list.tasks.create!(text: "Bake for mom's birthday", day: "2021-12-06T16:12:00.000Z", tags: ["Urgent", "Family"])
-personal_list.tasks.create!(text: "Lunch with Esther at UTown", day: "2021-12-06T16:12:00.000Z", tags: ["Friends"])
+personal_list.tasks.create!(text: "Bake for mom's birthday", day: "2021-12-12T04:12:00.049Z", tags: ["Urgent", "Family"])
+personal_list.tasks.create!(text: "Lunch with Esther at UTown", day: "2022-02-11T04:00:00.301Z", tags: ["Friends"])
 
 
 
@@ -42,8 +42,8 @@ tester2.tags.create!(text: "NUS", color: "#ed9ec9")
 
 cooking_list = tester2.lists.create!(text: "Cooking and Baking")
 
-cooking_list.tasks.create!(text: "Buy new whisking machine", day: "2021-12-06T16:12:00.000Z", tags: ["Urgent"])
-cooking_list.tasks.create!(text: "Get flour, eggs, sugar", day: "2021-12-06T16:12:00.000Z", done: true)
+cooking_list.tasks.create!(text: "Buy new whisking machine", day: "2022-01-29T08:30:00.896Z", tags: ["Urgent"])
+cooking_list.tasks.create!(text: "Get flour, eggs, sugar", day: "2022-01-27T11:00:00.223Z", done: true)
 
 project_list.generate_share_hash
 tester2.lists << project_list

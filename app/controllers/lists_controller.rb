@@ -43,16 +43,6 @@ class ListsController < ApplicationController
     end
   end
   
-  # POST /.../lists/1/share
-  def share
-    list = List.find(params[:list_id])
-    if list.share_hash.nil?
-      list.generate_share_hash
-    else
-      hash = list.share_hash
-    end
-    render plain: hash
-  end
 
 
   # DELETE /.../lists/1
